@@ -3,7 +3,7 @@ import { Context } from "./store/appContext";
 
 import MinigameRulesModal from "./component/MinigameRulesModal.jsx";
 import Swal from "sweetalert2";
-import { addTotalPoints , createNewPlayedGame } from "../services/APIServices.js";
+import { addTotalPoints, createNewPlayedGame } from "../services/APIServices.js";
 import { useNavigate } from "react-router-dom";
 
 
@@ -17,6 +17,7 @@ const FairPrice = () => {
     const [userGuess, setUserGuess] = useState("");
     const [score, setScore] = useState(0);
     const [message, setMessage] = useState("");
+    const [validGuess, setValidGuess] = useState(false);
 
     const navigate = useNavigate()
 
@@ -32,14 +33,19 @@ const FairPrice = () => {
 
     const handleUserGuess = (e) => {
         e.preventDefault();
+
         const userPrice = parseFloat(userGuess);
-        const actualPrice = product.price;
+
 
         if (isNaN(userPrice) || userPrice <= 0) {
             setMessage("Please enter a valid number");
+            setValidGuess(false);
             return;
         }
 
+        setValidGuess(true);
+
+        const actualPrice = product.price;
         const priceDifference = Math.abs(userPrice - actualPrice);
 
         let roundScore = 0;
@@ -58,26 +64,26 @@ const FairPrice = () => {
             setMessage("Quite far");
         }
 
-        setScore(prevScore => prevScore + roundScore);
+        setScore((prevScore) => prevScore + roundScore);
 
         setTimeout(() => {
             getRandomProduct();
             setUserGuess("");
-        }, 2000)
+            setValidGuess(false);
+        }, 2000);
+    };
 
-        
-    }
 
     ///// Evento para salir del juego y guardar las Partidas Jugadas y Total Points
     const handleGameOver = () => {
 
-        
-         //Llamada a la API para guardar las partida y los Total Points
+
+        //Llamada a la API para guardar las partida y los Total Points
         const isLogin = sessionStorage.getItem("token")
 
-        if(isLogin){
+        if (isLogin) {
 
-              const fairPrizeInfo = {
+            const fairPrizeInfo = {
                 user_id: sessionStorage.getItem("id_user"),
                 minigame_id: 3,
                 game_data: "Informacion sobre la partida de Fair Prize",
@@ -86,25 +92,25 @@ const FairPrice = () => {
                 mithril_per_second: null
 
             }
-            
+
             createNewPlayedGame(fairPrizeInfo)
 
-            addTotalPoints(score,sessionStorage.getItem("id_user"))
+            addTotalPoints(score, sessionStorage.getItem("id_user"))
 
 
             console.log("Se ha subido tu partida");
 
-        }else{
-        
-            return Swal.fire({
-                    icon: 'warning',
-                    title: 'Warning',
-                    text: `Debes logearte para poder guardar tus partidas`,
-                          });    
-                    
-        }  
+        } else {
 
-        navigate("/") 
+            return Swal.fire({
+                icon: 'warning',
+                title: 'Warning',
+                text: `Debes logearte para poder guardar tus partidas`,
+            });
+
+        }
+
+        navigate("/")
     }
 
     useEffect(() => {
@@ -135,13 +141,12 @@ const FairPrice = () => {
                         alt={product.title}
                         className="img-fluid h-25 w-25 mb-3 me-3"
                     />
-                    
+
                     <h3 className="text text-center mb-3">{product.title}</h3>
                     {
-                        message ? <h3 className="text fw-semibold border border-success rounded p-2 mb-3">Price: {product.price} $</h3> : 
-                        <h3 className="text fw-semibold border border-warning rounded p-2 mb-3">Price: ???</h3>
+                        validGuess ? <h3 className="text fw-semibold border border-success rounded p-2 mb-3">Price: {product.price} $</h3> :
+                            <h3 className="text fw-semibold border border-warning rounded p-2 mb-3">Price: ???</h3>
                     }
-                    {/* <p>Price: ${product.price}</p> */}
                     <form onSubmit={handleUserGuess} className="d-flex mb-2">
                         <input
                             type="number"
