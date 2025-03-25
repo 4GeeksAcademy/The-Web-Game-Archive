@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { logIn } from "../../services/APIServices";
 import { FooterFix } from "../component/footerFix";
+import backgroundImage from '../../img/fondo5.jpg'
 
 const UserLogin = () => {
     
@@ -34,8 +35,9 @@ const UserLogin = () => {
 
     return (
         <>
+        <div className="home-background vh-100" style={{ backgroundImage: `url(${backgroundImage})` }}>
         <div className="container">
-            <h1 className="mt-3 mb-5 text text-center">Login</h1>
+            <h1 className="mb-5 text-white text-center">Login</h1>
 
             {error && (
                 <div className="bg bg-danger border rounded mb-4 p-3">
@@ -47,7 +49,7 @@ const UserLogin = () => {
             <form onSubmit={(e) => handleOnLogin(e)}>
                 <div className="row mb-5">
                     <div className="col-lg-2 col-md-12">
-                        <h6 className="text">EMAIL</h6>
+                        <h6 className="text-white">EMAIL</h6>
                     </div>
                     <div className="col-lg-10 col-md-12">
                         <input
@@ -64,7 +66,7 @@ const UserLogin = () => {
 
                 <div className="row mb-5">
                     <div className="col-lg-2 col-md-12">
-                        <h6>PASSWORD</h6>
+                        <h6 className="text-white">PASSWORD</h6>
                     </div>
                     <div className="col-lg-2 col-md-12">
                         <input type="password"
@@ -78,7 +80,7 @@ const UserLogin = () => {
                 </div>
 
                 <div className="d-flex flex-column align-items-center mb-4">
-                    <button type="submit" className="btn" style={{ background: "rgb(205, 67, 26)", color: "white", fontSize: "23px" }}>
+                    <button type="submit" className="btn btn-danger" style={{ color: "white", fontSize: "23px" }}>
                         LOG IN
                     </button>
                 </div>
@@ -91,6 +93,7 @@ const UserLogin = () => {
                 </button>
             </div>
 
+        </div>
         </div>
         <FooterFix/>        
         </>
