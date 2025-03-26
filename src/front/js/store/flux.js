@@ -114,7 +114,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 					console.log("Datos de minijuegos obtenidos:", minigamesData)
 				} catch (error) {
-					console.log("Error obteniendo datos de minijuegos:", error);
+
 				}
 			}
 		}
