@@ -10,7 +10,7 @@ const Potterdle = () => {
   const [currentGuess, setCurrentGuess] = useState([]); // Palabra que el usuario esta escribiendo
   const maxAttempts = 5; // Maximo de intentos
   const inputRefs = useRef([]); // Referencias a los inputs para manejar el foco
-  const [score, setScore] = useState(4);
+  const [score, setScore] = useState(60);
   const [gameOver, setGameOver] = useState(false);
 
   // Teclado virtual
@@ -120,8 +120,6 @@ const Potterdle = () => {
 
   const handleGameOver = () => {
     setGameOver(true);
-
-
   }
 
   // Enviar un intento
@@ -130,7 +128,7 @@ const Potterdle = () => {
       setGuesses([...guesses, currentGuess.join('')]);
       setCurrentGuess(Array(targetWord.length).fill(''));
       inputRefs.current[0].focus();
-      setScore(score - 1);
+      setScore(score - 10);
     }
   };
 
@@ -252,9 +250,14 @@ const Potterdle = () => {
           <GameOverModal
             score={score}
             onRetry={resetGame}
-            show={handleGameOver}
+            show={guesses.includes(targetWord)}
             minigameId={5}
           />
+          {!guesses.includes(targetWord) && (
+            <button onClick={resetGame} className="btn btn-primary mt-3">
+              Replay
+            </button>
+          )}
         </div>
       )}
     </div>

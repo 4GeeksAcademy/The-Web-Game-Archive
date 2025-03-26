@@ -12,8 +12,8 @@ const GameOverModal = ({ score, onRetry, show, minigameId }) => {
         <div className="game-over-overlay d-flex justify-content-center align-items-center">
             <div className="game-over-modal bg-light p-4 rounded shadow w-100" style={{ maxWidth: "600px" }}>
                 <h2 className="text-danger fw-bold">Game Over!</h2>
-                <h3 className="mt-3">
-                    <strong>Your Score:</strong> {score}
+                <h3 className="mt-3 text-dark">
+                    <strong className="text-dark">Your Score:</strong> {score}
                 </h3>
                 <div className="mt-3">
                     <LeaderBoardTable minigameId={minigameId} />
