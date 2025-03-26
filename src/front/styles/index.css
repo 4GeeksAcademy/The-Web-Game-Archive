@@ -2,59 +2,79 @@
     General Styles used on every website (Don't Repeat Yourself)
 */
 .custom-danger-bg {
-    background-color: #ffd0cc;
- }
+  background-color: #ffd0cc;
+}
 
 .navbar {
-    height: 100px;
-  }
-
-.navbar-background{
-  background-color: rgba(0,24,51)
-    
-  }
-
-.footer-background{
-  background-color: rgba(78,15,46)
+  height: 100px;
 }
-.home-background{
+
+.navbar-background {
+  background-color: rgba(0, 24, 51)
+}
+
+.footer-background {
+  background-color: rgba(78, 15, 46)
+}
+
+.home-background {
   position: relative;
   background-size: cover;
   background-position: center;
 }
 
 table {
-  border-collapse: separate; /* Evita que los bordes se unan */
-  border-spacing: 10px; /* Espaciado entre celdas */
+  border-collapse: separate;
+  /* Evita que los bordes se unan */
+  border-spacing: 10px;
+  /* Espaciado entre celdas */
 }
 
-tr, td, th {
-  border: 2px solid black !important; /* Bordes en todas las direcciones */
-  padding: 15px; /* Espaciado interno */
-  text-align: center; /* Centrar texto */
+tr,
+td,
+th {
+  border: 2px solid black !important;
+  /* Bordes en todas las direcciones */
+  padding: 15px;
+  /* Espaciado interno */
+  text-align: center;
+  /* Centrar texto */
   background-color: rgba(117, 25, 25, 0.7);
 }
 
-th{
+th {
   background-color: rgba(39, 3, 3, 0.5) !important;
 }
 
 .pokemon-silhouette {
-    filter: brightness(0) contrast(100%);
+  filter: brightness(0) contrast(100%);
 }
 
 .game-over-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
-    z-index: 1050; /* Para asegurarse de que esté encima de otros elementos */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Fondo oscuro semitransparente */
+  z-index: 1050;
+  /* Para asegurarse de que esté encima de otros elementos */
 }
 
 .game-over-modal {
-    max-width: 400px;
-    width: 90%; /* Para adaptarse a pantallas pequeñas */
-    text-align: center;
+  max-width: 400px;
+  width: 90%;
+  /* Para adaptarse a pantallas pequeñas */
+  text-align: center;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Cambiar el fondo del botón al hacer hover */
+.custom-toggler:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
 }
