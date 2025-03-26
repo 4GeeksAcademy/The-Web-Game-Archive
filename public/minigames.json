@@ -47,5 +47,17 @@
             "Debes seleccionar si la derecha tiene más o menos votos",
             "En el momento que falles, la partida acaba"
         ]
+    },
+    {
+        "name": "potterdle",
+        "rules": [
+            "Intenta adivinar el personaje de Harry Potter",
+            "Introduce una palabra de longitud correcta",
+            "Cada letra de tu palabra cambiará de color para darte pistas",
+            "Verde es que la letra está en la palabra y en posición correcta",
+            "Amarillo es que la letra está pero en otra posición",
+            "Gris es que la letra no está en la palabra",
+            "Tienes 5 intentos para adivinar"
+        ]
     }
 ]
