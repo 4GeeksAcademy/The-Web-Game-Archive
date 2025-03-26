@@ -36,7 +36,7 @@ const MinigameRulesModal = ({ gameName, onRulesClosed }) => {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title">Rules for {gameName}</h5>
+                                <h5 className="modal-title text-dark">Rules for {gameName}</h5>
                                 <button
                                     type="button"
                                     className="btn-close"
@@ -47,7 +47,7 @@ const MinigameRulesModal = ({ gameName, onRulesClosed }) => {
                                 {rules.length > 0 ? (
                                     <ol>
                                         {rules.map((rule, index) => (
-                                            <li key={index}>{rule}</li>
+                                            <li className="text-dark" key={index}>{rule}</li>
                                         ))}
                                     </ol>
                                 ) : (
