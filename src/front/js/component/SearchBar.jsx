@@ -19,7 +19,7 @@ const SearchBar = ({ names, onSelect }) => {
     }
 
     const handleSuggestionClick = (suggestion) => {
-        setInputValue(suggestion);
+        setInputValue("");
         setSuggestions([]);
         onSelect(suggestion);
     }
