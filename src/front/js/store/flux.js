@@ -78,12 +78,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1010");
 					const data = await response.json();
 
-					const pokemonNames = data.results.map((pokemon) => pokemon.name);
+					const pokemonNames = data.results.map((pokemon) => {
+						return pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+					});
+
 					setStore({ pokemonList: pokemonNames });
 				} catch (error) {
 					console.error("Error fetching Pokémon list:", error);
 				}
 			},
+
 
 			getStoreProducts: async () => {
 				try {
