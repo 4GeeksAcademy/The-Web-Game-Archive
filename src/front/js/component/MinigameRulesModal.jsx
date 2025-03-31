@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 
 const MinigameRulesModal = ({ gameName, onRulesClosed }) => {
     const [rules, setRules] = useState([]);
+    const [gameDisplayName, setGameDisplayName] = useState("");
     const [showModal, setShowModal] = useState(true);
 
     const handleCloseModal = () => {
@@ -18,6 +19,7 @@ const MinigameRulesModal = ({ gameName, onRulesClosed }) => {
             const game = games.find((minigame) => minigame.name === gameName);
             if (game) {
                 setRules(game.rules);
+                setGameDisplayName(game.display_name);
             }
         })
             .catch((error) => console.error("Error loading minigame data", error));
@@ -36,7 +38,7 @@ const MinigameRulesModal = ({ gameName, onRulesClosed }) => {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title text-dark">Rules for {gameName}</h5>
+                                <h5 className="modal-title text-dark">Reglas de {gameDisplayName}</h5>
                                 <button
                                     type="button"
                                     className="btn-close"
