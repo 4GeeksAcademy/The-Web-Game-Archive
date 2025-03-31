@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "/workspaces/The-Web-Game-Archive/src/front/styles/index.css";
+import "../../styles/index.css";
 
 export const Footer = () => (
 	<footer className="footer mt-auto py-3 text-center footer-background">
