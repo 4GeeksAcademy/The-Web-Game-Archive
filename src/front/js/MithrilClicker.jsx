@@ -7,6 +7,7 @@ import MithrilInventory from './component/MithrilInventory.jsx';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { createNewPlayedGame, addTotalPoints } from '../services/APIServices.js';
+import MinigameRulesModal from './component/MinigameRulesModal.jsx';
 
 // TODO: arreglar la imagen de los items comprados
 
@@ -150,6 +151,7 @@ const MithrilAutoclicker = () => {
 
     return (
         <div className='container mt-4'>
+            <MinigameRulesModal gameName={"mithril"} />
             <div className='row'>
                 <div className='col-12 col-lg-3'>
                     <MithrilOreButton

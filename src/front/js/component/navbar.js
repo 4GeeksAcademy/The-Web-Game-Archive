@@ -99,7 +99,7 @@ export const Navbar = () => {
 					<div className="d-flex mt-3 justify-content-center mb-4">
 						{!isVerificated ? (
 							<>
-								<Link to="User-Register" className="btn btn-outline-danger me-2">Register</Link>
+								<Link to="User-Register" className="btn btn-outline-danger text text-light me-2">Register</Link>
 								<Link to="User-Login" className="btn btn-danger">Log In</Link>
 							</>
 						) : (
@@ -116,7 +116,7 @@ export const Navbar = () => {
 								) : (
 									<Link to="Users" className="btn btn-danger me-2">👤 Profile</Link>
 								)}
-								<button onClick={handleLogOut} className="btn btn-outline-danger me-2">
+								<button onClick={handleLogOut} className="btn btn-outline-danger text text-light me-2">
 									Logout
 								</button>
 							</>
